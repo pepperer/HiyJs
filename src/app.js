@@ -5,12 +5,13 @@ import {
   System as SystemConfig
 } from './config'
 import path from 'path'
+
 import MainRoutes from './routes/main-routes'
 import ErrorRoutesCatch from './middleware/ErrorRoutesCatch'
 import ErrorRoutes from './routes/error-routes'
+
 import jwt from 'koa-jwt'
 import fs from 'fs'
-// import PluginLoader from './lib/PluginLoader'
 
 const app = new Koa2()
 const env = process.env.NODE_ENV || 'development' // Current mode
@@ -42,7 +43,7 @@ app
     formLimit: '10mb',
     textLimit: '10mb'
   })) // Processing request
-  // .use(PluginLoader(SystemConfig.System_plugin_path))
+// .use(PluginLoader(SystemConfig.System_plugin_path))
   .use(MainRoutes.routes())
   .use(MainRoutes.allowedMethods())
   .use(ErrorRoutes())
