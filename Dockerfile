@@ -5,12 +5,10 @@ ENV TZ=Asia/Shanghai
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . .
 
 RUN npm install -g @babel/cli @babel/core \
     && npm install
-
-COPY . .
 
 RUN npm run build
 
